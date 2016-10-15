@@ -1,0 +1,378 @@
+body{
+    background: url(images/wp1.jpg) no-repeat center center fixed;
+    background-size: cover;
+    font-family: helvetica;
+    transition: background 1s ease-in-out;
+}
+input {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+.editMode{
+    transform: translate(20em);
+    transition: all .3s ease-in-out;
+}
+@keyframes fade-and-scale{
+    0%{
+        transform: scale(.9, .9);
+    }
+    100%{
+
+    }
+}
+@keyframes fade-and-slide{
+    0%{
+        transform: translateY(2em);
+    }
+    100%{
+        
+    }
+}
+.mainContent{
+    position: absolute;
+    width:100%;
+    top:0;
+    bottom:7em;
+    left:0;
+    right:0;
+    overflow: auto;
+}
+.quickLinksContainer{
+    z-index: 100;
+    position: fixed;
+    height:7em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+/*    border-top: .1em solid rgba(255,255,255,.5);*/
+    bottom: 0;
+    box-shadow: 0 0 20px black;
+    animation: .4s fade-and-slide;
+    overflow-x: auto;
+}
+.overlay, .blur{
+    z-index: -1;
+    height:100%;
+    width:100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+.overlay{
+    background: rgba(0,0,0,.1);
+}
+.blur{
+    background: url(images/wp1.jpg) no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+.quickLink{
+    z-index: 2;
+    height:4em;
+    width:11em;
+    margin: .5em;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-family: 'Source sans pro';
+    box-shadow: 0 0 20px black;
+    color:white;
+}
+.quickLink img{
+    max-height: 2em;
+    margin: 1em auto;
+}
+.widgetContainer{
+    width:100%;
+    max-width: 80em;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: .5s fade-and-scale;
+}
+.widget{
+    position: relative;
+    height:15em;
+    width:20em;
+    margin: 1em;
+/*    border: .1em solid rgba(255,255,255,.5);*/
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px rgb(50,50,50);
+    transition: all .3s ease-in-out;
+}
+.widget:hover .widgetButtonHolder{
+    opacity: 1;
+    transform: none;
+    transition: all .3s ease-in-out;
+}
+.widget img{
+    max-height: 3em;
+    margin: auto;
+}
+.widgetButtonHolder{
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(3em);
+    height:3em;
+    background: rgba(0,0,0,.3);
+    transition: all .3s ease-in-out;
+    display: flex;
+    color:white;
+}
+.widgetButtonHolder a{
+    width:100%;
+    margin: 0 auto;
+    line-height: 2.4em;
+    text-align: center;
+    text-decoration: none;
+    color:white;
+}
+/*
+.widget:nth-child(1){
+    animation: .2s fade-and-slide;
+}.widget:nth-child(2){
+    animation: .3s fade-and-slide;
+}.widget:nth-child(3){
+    animation: .4s fade-and-slide;
+}.widget:nth-child(4){
+    animation: .5s fade-and-slide;
+}.widget:nth-child(5){
+    animation: .6s fade-and-slide;
+}.widget:nth-child(6){
+    animation: .7s fade-and-slide;
+}.widget:nth-child(7){
+    animation: .8s fade-and-slide;
+}.widget:nth-child(8){
+    animation: .9s fade-and-slide;
+}
+*/
+
+form, .form{
+    z-index: 2;
+    height:3em;
+    display: flex;
+}
+.searchbar{
+    width:75%;
+    background: rgba(255,255,255,.8);
+    border:none;
+    padding: .3em;
+    font-size: 1.3em;
+    color:black;
+}
+.searchbar:focus{
+    box-shadow: none;
+    outline:none;
+}
+.searchButton{
+    width:25%;
+    background: rgba(0,0,0,.3);
+    border:none;
+    color:white;
+}
+#widget7{
+    overflow: hidden;
+}
+.calculator{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+.display{
+    background: rgba(255,255,255,.8);
+    padding: .4em;
+    font-size: 1.3em;
+    text-align: right;
+    border: none;
+}
+.calcRow{
+    height:2.5em;
+    display: flex;
+}
+.calcButton{
+    width: 100%;
+    border: none;
+    background: rgba(255,255,255,.5);
+    outline:.1em solid rgba(0,0,0,.3);
+}
+#reset{
+    width:75%;
+}
+#divide{
+    width:25%;
+}
+#operand, #equalSign, #divide{
+    background: rgba(0,0,0,.3);
+    color: white;
+    outline: .1em solid rgba(255,255,255,.5);
+}
+.iframeHolder{
+    height:34%;
+}
+
+.settings{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    font-family: 'source sans pro';
+}
+.sidebar{
+    position: relative;
+    height:100%;
+    width:25%;
+    max-width: 30em;
+    min-width: 20em;
+    background: rgba(0,0,0,.3);
+    color: white;
+    
+    text-align: center;
+    box-shadow: 0 0 10px black;
+}
+.sidebar h2{
+    margin: 0 auto;
+    height:3em;
+    line-height: 3em;
+    background: rgba(0,0,0,.3);
+/*    border-top: .1em solid rgba(0,0,0,.7);*/
+    box-shadow: 0 1px 0px black;
+}
+.sidebar h2:hover{
+    background: rgba(255,255,255,.2);
+    transition: all .15s ease-in-out;
+}
+#done{
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    height:3em;
+    text-align: center;
+    line-height: 3em;
+    background: dodgerblue;
+    color: white;
+}
+.settingsContent{
+    position: relative;
+    height:100%;
+    width: inherit;
+    overflow: auto;
+}
+.settingsSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.sectionHeader{
+    height:2.6em;
+    margin: 0;
+    width: 100%;
+    line-height: 2.5em;
+    background: rgba(0,0,0,.3);
+    color: white;
+}
+/*Background Settings*/
+.wpHolder{
+    height:17em;
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    animation: fade-and-slide .3s;
+}
+.wallpaper, .customWP{
+    height:15em;
+    width:15em;
+    margin:1em;
+    box-shadow: 0 0 10px;
+    background-size: cover;
+}
+.wallpaper:nth-child(1){
+    background: url(images/wp1.jpg) center;
+    background-size: cover;
+}
+.wallpaper:nth-child(2){
+    background: url(images/wp2.jpg);
+    background-size: cover;
+}
+.wallpaper:nth-child(3){
+    background: url(images/wp3.jpg);
+    background-size: cover;
+}
+.customWP{
+    display: flex;
+    flex-direction: column;
+    background: rgba(0,0,0,.7);
+    background-size: contain;
+}
+.uploadBox{
+    margin-bottom: 0;
+    height:3em;
+    display: flex;
+    bottom: 0;
+}
+.uploadBox input{
+    width:65%;
+}
+.uploadBox h2{
+    width:35%;
+    height: 100%;
+    margin: auto;
+    line-height: 2em;
+    background: rgba(0,0,0,.3);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

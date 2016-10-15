@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link rel="stylesheet"  href="index.css">
+        <title>Utilities 3.0</title>
+    </head>
+    <body>
+        <div class="mainContent">
+            <div class="quickLinksContainer">
+                <div class="blur"></div>
+                <div class="overlay"></div>
+                <div class="quickLink" id="settingsQuickLink" style="background:rgba(170,170,170,.6)">
+                    <img src="images/icons/settings.png">
+                </div>
+                <a class="quickLink" style="background:rgba(100,200,100,.4)" href="https://my.calpoly.edu">
+                    <img src="images/icons/calpoly.png">
+                </a>
+                <a class="quickLink" style="background-color:rgba(36, 116, 237, 0.4)" href="https://reddit.com">
+                    <img src="images/icons/reddit.png">
+                </a>
+                <a class="quickLink" style="background-color:rgba(59, 89, 152, 0.5);" href="https://facebook.com">
+                    <img src="images/icons/facebook.png">
+                </a>
+                <a class="quickLink" style="background-color:rgba(22, 185, 237, .5);" href="http://reddit.com">
+                    <img src="images/icons/twitter.png">
+                </a>
+
+            </div>
+            <div class="widgetContainer">
+                <div class="widget" id="widget1">
+                    <div class="blur"></div>
+                    <div class="overlay"></div>
+                    <img src="images/logos/google.png" draggable='false'>
+                      <form action="https://google.com/search">
+                        <input class="searchbar" type="text" name="q" autocomplete="off">
+                         <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                      </form>
+                </div>
+                <div class="widget" id="widget2">
+                    <div class="blur"></div>
+                    <div class="overlay"></div>
+                    <img src="images/logos/yahoo.png" draggable='false'>
+                    <form action="https://google.com/search">
+                        <input class="searchbar" type="text" name="q" autocomplete="off">
+                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    </form>
+                </div>
+                <div class="widget" id="widget3">
+                    <div class="blur"></div>
+                    <div class="overlay"></div>
+                    <img src="images/logos/reddit.png" draggable='false'>
+                    <div class="widgetButtonHolder">
+                        <a href="reddit.com">Front page</a>
+                    </div>
+                    <form action="https://google.com/search">
+                        <input class="searchbar" type="text" name="q" autocomplete="off">
+                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    </form>
+                </div>
+                <div class="widget" id="widget4">
+                    <div class="blur"></div>
+                    <div class="overlay"></div>
+                    <img src="images/logos/facebook.png" draggable='false'>
+                    <form action="https://google.com/search">
+                        <input class="searchbar" type="text" name="q" autocomplete="off">
+                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    </form>
+                </div>
+                <div class="widget" id="widget5">
+                    <div class="blur"></div>
+                    <div class="overlay"></div>
+                    <img src="images/logos/youtube.png" draggable='false'>
+                    <form action="https://google.com/search">
+                        <input class="searchbar" type="text" name="q" autocomplete="off">
+                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    </form>
+                </div>
+                <div class="widget" id="widget6">
+                    <div class="blur"></div>
+                    <div class="overlay"></div>
+                    <img src="images/logos/amazon.png" draggable='false'>
+                    <form action="https://google.com/search">
+                        <input class="searchbar" type="text" name="q" autocomplete="off">
+                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    </form>
+                </div>
+                <div class="widget" id="widget7">
+                    <div class="blur"></div>
+                    <div class="overlay"></div>
+                    <form class="calculator" name="calculator" > 
+                        <input class="display" type="textfield" name="ans" value="" placeholder='0' readonly>
+                        <div class="calcRow">
+                            <input class="calcButton" id="reset" type="reset" value="Clear">
+                            <input class="calcButton" id="divide" type="button" value="/" onClick="document.calculator.ans.value+='/'">
+                        </div>
+                        <div class='calcRow'>
+                            <input class="calcButton" id="button7" type="button" value="7" onClick="document.calculator.ans.value+='7'">
+                            <input class="calcButton" type="button" value="8" onClick="document.calculator.ans.value+='8'">
+                            <input class="calcButton" type="button" value="9" onClick="document.calculator.ans.value+='9'">
+                            <input class="calcButton" id="operand" type="button" value="X" onClick="document.calculator.ans.value+='*'">
+                        </div>
+                        <div class='calcRow'>
+                            <input type="button" class="calcButton" id="button4" value="4" onClick="document.calculator.ans.value+='4'">
+                             <input type="button" class="calcButton" value="5" onClick="document.calculator.ans.value+='5'">
+                             <input type="button" class="calcButton" value="6" onClick="document.calculator.ans.value+='6'">
+                             <input type="button" class="calcButton" id="operand" value="-" onClick="document.calculator.ans.value+='-'">
+                        </div>
+                        <div class='calcRow'>
+                            <input class="calcButton" id="button1" type="button" value="1" onClick="document.calculator.ans.value+='1'">
+                            <input class="calcButton" type="button" value="2" onClick="document.calculator.ans.value+='2'">
+                            <input class="calcButton" type="button" value="3" onClick="document.calculator.ans.value+='3'">
+                            <input class="calcButton" id="operand" type="button" value="+" onClick="document.calculator.ans.value+='+'">
+                        </div>
+                        <div class='calcRow'>
+                            <input class="calcButton" id='zero' type="button" value="0" onClick="document.calculator.ans.value+='0'">
+                            <input class="calcButton" id='period' type="button" value="."  onClick="document.calculator.ans.value+='.'">
+                            <input class="calcButton" id="equalSign" type="button" value="=" onClick="document.calculator.ans.value=eval(document.calculator.ans.value)">
+                        </div>
+                    </form>
+                </div>
+                <div class="widget" id="widget8">
+                    <div class="blur"></div>
+                    <div class="overlay"></div>
+                    <img src="images/logos/spotify.png" draggable='false'>
+                    <form action="https://google.com/search">
+                        <input class="searchbar" type="text" name="q" autocomplete="off">
+                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="settings">
+            <div class="sidebar">
+<!--                <div class="blur"></div>-->
+<!--                <div class="overlay"></div>-->
+                <h1>Settings</h1>
+                <h2 class="sidebarButton" id="1sidebar">Background</h2>
+                <h2 class="sidebarButton" id="2sidebar">Widget Layout</h2>
+                <h2 id="done">Done</h2>
+            </div>
+            <div class="settingsContent">
+                <div class="settingsSection" id="settingsSection1">
+                    <h1 class="sectionHeader">Background Settings</h1>
+                    <div class="wpHolder">
+<!--                        <img class="wallpaper" id="1wp" src="images/wp1.jpg">-->
+                        <div class="wallpaper" id="1wp" src="images/wp1.jpg"></div>
+                        <div class="wallpaper" id="2wp" src="images/wp2.jpg"></div>
+                        <div class="wallpaper" id="3wp" src="images/wp3.jpg"></div>
+                        <div class="customWP">
+                            <div class="uploadBox">
+                                <input class="searchbar" id="customURL" type="text" autocomplete="off" placeholder="Custom URL">
+                                <h2>Done</h2>
+                            </div>
+                            <script>
+                                $("#customURL").change(function(){
+                                    changeWP();
+                                })
+                                $(".uploadBox h2").click(function(){
+                                    changeWP();
+                                })
+                                $(".customWP").click(function(){
+                                    if ($("#customURL")!=""){
+                                        changeWP();
+                                    }
+                                })
+                                function changeWP(){
+                                    var wpURL = $("#customURL").val();
+                                    if ($("#customURL")!=""){
+                                        $("body, .blur, .customWP").css("background","url("+wpURL+") no-repeat center center fixed");
+                                        $("body, .blur, .customWP").css("background-size","cover");
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="settingsSection" id="settingsSection2">
+                    <h1>Hello</h1>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(".settings, .settingsSection").hide();
+            $("#settingsQuickLink").click(function(){
+                $(".widgetContainer, .quickLinksContainer").fadeOut("fast");
+                $(".settings").fadeIn("fast");
+            })
+            $("#done").click(function(){
+                $(".settings").fadeOut("fast");
+                $(".widgetContainer, .quickLinksContainer").fadeIn("fast");
+            })
+            $(".sidebarButton").click(function(){
+                $(".settingsSection").fadeOut("fast");
+                var buttonID = parseInt($(this).attr("id"));
+                $("#settingsSection"+buttonID).delay(200).fadeIn("fast");
+            })
+            
+            //Background changing
+            $(".wallpaper").click(function(){
+                var WPID = parseInt($(this).attr("id"));
+                localStorage.setItem("WPType","preset");
+                localStorage.setItem("WPID",WPID);
+//                $("body").css("background","url(images/wp"+WPID+".jpg)");
+                setWP(WPID);
+            })
+            function setWP(WPID){  
+                if (localStorage.getItem("WPType")=="preset"){
+                    WPID = localStorage.getItem("WPID");
+                    $("body, .blur").css("background","url(images/wp"+WPID+".jpg) no-repeat center center fixed");
+                }
+//                else if (localStorage.getItem("WPType")=="custom"){
+//                    WPID = localStorage.getItem("WPID");
+//                    $("body").css("background","url("+WPID+") no-repeat center center fixed");
+//                    $("#currentWP").css("background","url("+WPID+")");
+//                }
+//                else if (localStorage.getItem("WPType")=="theme"){
+//                    WPID = localStorage.getItem("theme");
+//                    if (WPID == "space"){
+//                        $("body").css("background","url(images/Wallpapers/"+WPID+".jpg) no-repeat center center fixed");
+//                        setTheme(WPID);
+//                    }
+//                    else if (WPID == "tron"){
+//                        $("body").css("background","url(images/Wallpapers/"+WPID+".gif) no-repeat center center fixed");
+//                        setTheme(WPID);
+//                    }
+//                }
+//                else{
+//                    getTime();
+//                }
+                $("body, .blur").css("background-size","cover");
+                if (localStorage.getItem("WPURL") != null){
+                    $("#currentWP").css("background","url("+localStorage.getItem("WPURL")+")");
+                }
+            }
+//            $("#uploadButton").click(function(){
+//                var WPID = window.prompt("Please enter a picture URL");
+//                localStorage.setItem("WPType","custom");
+//                localStorage.setItem("WPID",WPID);
+//                if (WPID != null){
+//                    localStorage.setItem("WPURL",WPID);
+//                    setWP(WPID);
+//                }
+//            });
+//            $("#eraseWP").click(function(){
+//                localStorage.setItem("WPType",null);
+//                getTime();
+//            });
+//            $("#currentWP").click(function(){
+//                if (localStorage.getItem("WPURL") != null){
+//                    var WPURL = localStorage.getItem("WPURL")
+//                    localStorage.setItem("WPType","custom");
+//                    localStorage.setItem("WPID",WPURL);
+//                    setWP(localStorage.getItem("WPURL"));
+//                }
+//            });
+        </script>
+    </body>
+</html>
