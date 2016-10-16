@@ -275,7 +275,7 @@ form, .form{
     text-align: center;
         animation: fade-and-slide .3s;
 }
-.sectionHeader{
+.sectionHeader, .subSectionHeader{
     height:2.6em;
     margin: 0;
     width: 100%;
@@ -289,16 +289,13 @@ form, .form{
     width:100%;
 }
 .subSectionHeader{
-    margin: auto;
-    width: 100%;
-    padding: .3em;
     background: rgba(0,0,0,.6);
-    color: white;
+    line-height: inherit;
+    height: 1.5em;
 }
 /*Background Settings*/
 .subSection{
     width:100%;
-    padding-top: 2em;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
