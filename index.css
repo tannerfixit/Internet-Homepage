@@ -1,8 +1,9 @@
 body{
-    background: url(images/wp1.jpg) no-repeat center center fixed;
+/*    background: url(images/wp1.jpg) no-repeat center center fixed;*/
     background-size: cover;
     font-family: helvetica;
     transition: background 1s ease-in-out;
+    overflow: hidden;
 }
 input {
     -webkit-appearance: none;
@@ -32,7 +33,7 @@ input {
     position: absolute;
     width:100%;
     top:0;
-    bottom:7em;
+    bottom:0;
     left:0;
     right:0;
     overflow: auto;
@@ -40,16 +41,25 @@ input {
 .quickLinksContainer{
     z-index: 100;
     position: fixed;
-    height:7em;
+    height:5.5em;
     width: 100%;
+    max-width: 70em;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-/*    border-top: .1em solid rgba(255,255,255,.5);*/
-    bottom: 0;
+    background: rgba(0,0,0,.8);
+    border-radius: 4px;
     box-shadow: 0 0 20px black;
     animation: .4s fade-and-slide;
     overflow-x: auto;
+}
+.quickLinksContainer .overlay{
+    background: rgba(0,0,0,.6);
 }
 .overlay, .blur{
     z-index: -1;
@@ -65,8 +75,9 @@ input {
     background: rgba(0,0,0,.1);
 }
 .blur{
-    background: url(images/wp1.jpg) no-repeat center center fixed;
+/*    background: url(images/wp1.jpg) no-repeat center center fixed;*/
     background-size: cover;
+/*    transition: background 1s ease-in-out;*/
     filter: blur(5px);
     -webkit-filter: blur(5px);
 }
@@ -104,12 +115,15 @@ input {
     display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 10px rgb(50,50,50);
-    transition: all .3s ease-in-out;
+    transition: all .15s ease-in-out;
 }
 .widget:hover .widgetButtonHolder{
     opacity: 1;
     transform: none;
     transition: all .3s ease-in-out;
+}
+.widget:hover{
+    box-shadow: 0px 0px 50px black;
 }
 .widget img{
     max-height: 3em;
@@ -133,25 +147,10 @@ input {
     text-decoration: none;
     color:white;
 }
-/*
-.widget:nth-child(1){
-    animation: .2s fade-and-slide;
-}.widget:nth-child(2){
-    animation: .3s fade-and-slide;
-}.widget:nth-child(3){
-    animation: .4s fade-and-slide;
-}.widget:nth-child(4){
-    animation: .5s fade-and-slide;
-}.widget:nth-child(5){
-    animation: .6s fade-and-slide;
-}.widget:nth-child(6){
-    animation: .7s fade-and-slide;
-}.widget:nth-child(7){
-    animation: .8s fade-and-slide;
-}.widget:nth-child(8){
-    animation: .9s fade-and-slide;
+.bumper{
+    height:5.5em;
+    width:100%;
 }
-*/
 
 form, .form{
     z-index: 2;
@@ -274,6 +273,7 @@ form, .form{
     flex-direction: column;
     justify-content: center;
     text-align: center;
+        animation: fade-and-slide .3s;
 }
 .sectionHeader{
     height:2.6em;
@@ -283,15 +283,27 @@ form, .form{
     background: rgba(0,0,0,.3);
     color: white;
 }
-/*Background Settings*/
-.wpHolder{
-    height:17em;
+.sectionHeaderOutline{
+    position: absolute;
+    height:2.6em;
     width:100%;
+}
+.subSectionHeader{
+    margin: auto;
+    width: 100%;
+    padding: .3em;
+    background: rgba(0,0,0,.6);
+    color: white;
+}
+/*Background Settings*/
+.subSection{
+    width:100%;
+    padding-top: 2em;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    animation: fade-and-slide .3s;
+    background: rgba(0,0,0,.3);
 }
 .wallpaper, .customWP{
     height:15em;
@@ -310,6 +322,10 @@ form, .form{
 }
 .wallpaper:nth-child(3){
     background: url(images/wp3.jpg);
+    background-size: cover;
+}
+.wallpaper:nth-child(4){
+    background: url(images/wp4.jpg);
     background-size: cover;
 }
 .customWP{

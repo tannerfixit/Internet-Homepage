@@ -2,19 +2,18 @@
 <html>
     <head>
         <script src="jquery.js"></script>
+        <script src="jquery-ui.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <link rel="stylesheet"  href="index.css">
         <title>Utilities 3.0</title>
     </head>
-    <body>
+    <body onload="startup()">
         <div class="mainContent">
             <div class="quickLinksContainer">
                 <div class="blur"></div>
                 <div class="overlay"></div>
-                <div class="quickLink" id="settingsQuickLink" style="background:rgba(170,170,170,.6)">
-                    <img src="images/icons/settings.png">
-                </div>
+                
                 <a class="quickLink" style="background:rgba(100,200,100,.4)" href="https://my.calpoly.edu">
                     <img src="images/icons/calpoly.png">
                 </a>
@@ -24,10 +23,12 @@
                 <a class="quickLink" style="background-color:rgba(59, 89, 152, 0.5);" href="https://facebook.com">
                     <img src="images/icons/facebook.png">
                 </a>
-                <a class="quickLink" style="background-color:rgba(22, 185, 237, .5);" href="http://reddit.com">
+                <a class="quickLink" style="background-color:rgba(22, 185, 237, .5);" href="http://twitter.com">
                     <img src="images/icons/twitter.png">
                 </a>
-
+                <div class="quickLink" id="settingsQuickLink" style="background:rgba(170,170,170,.6)">
+                    <img src="images/icons/settings.png">
+                </div>
             </div>
             <div class="widgetContainer">
                 <div class="widget" id="widget1">
@@ -130,7 +131,7 @@
                         <input class="searchButton" type="submit" name="searchbutton" value="Search">
                     </form>
                 </div>
-
+                <div class="bumper"></div>
             </div>
         </div>
         <div class="settings">
@@ -138,18 +139,21 @@
 <!--                <div class="blur"></div>-->
 <!--                <div class="overlay"></div>-->
                 <h1>Settings</h1>
-                <h2 class="sidebarButton" id="1sidebar">Background</h2>
+                <h2 class="sidebarButton" id="1sidebar">Theme</h2>
                 <h2 class="sidebarButton" id="2sidebar">Widget Layout</h2>
+                <h2 class="sidebarButton" id="3sidebar">Account</h2>
                 <h2 id="done">Done</h2>
             </div>
+            <div class="sectionHeaderOutline"></div>
             <div class="settingsContent">
                 <div class="settingsSection" id="settingsSection1">
-                    <h1 class="sectionHeader">Background Settings</h1>
-                    <div class="wpHolder">
-<!--                        <img class="wallpaper" id="1wp" src="images/wp1.jpg">-->
+                    <h1 class="sectionHeader">Themes and Wallpaper</h1>
+                    <h2 class="subSectionHeader">Wallpaper</h2>
+                    <div class="subSection">
                         <div class="wallpaper" id="1wp" src="images/wp1.jpg"></div>
                         <div class="wallpaper" id="2wp" src="images/wp2.jpg"></div>
                         <div class="wallpaper" id="3wp" src="images/wp3.jpg"></div>
+                        <div class="wallpaper" id="4wp" src="images/wp4.jpg"></div>
                         <div class="customWP">
                             <div class="uploadBox">
                                 <input class="searchbar" id="customURL" type="text" autocomplete="off" placeholder="Custom URL">
@@ -157,36 +161,39 @@
                             </div>
                             <script>
                                 $("#customURL").change(function(){
-                                    changeWP();
+                                    localStorage.setItem("WPType","custom");
+                                    localStorage.setItem("WPID",$("#customURL").val());
+                                    setWP("custom");
                                 })
                                 $(".uploadBox h2").click(function(){
-                                    changeWP();
+                                    setWP("custom");
                                 })
                                 $(".customWP").click(function(){
-                                    if ($("#customURL")!=""){
-                                        changeWP();
+                                    if ($(localStorage.getItem("WPID"))!=""){
+                                        setWP("custom");
                                     }
                                 })
-                                function changeWP(){
-                                    var wpURL = $("#customURL").val();
-                                    if ($("#customURL")!=""){
-                                        $("body, .blur, .customWP").css("background","url("+wpURL+") no-repeat center center fixed");
-                                        $("body, .blur, .customWP").css("background-size","cover");
-                                    }
-                                }
                             </script>
                         </div>
                     </div>
+                    <h2 class="subSectionHeader">Themes</h2>
+                    <div class="subSection">
+                        <p>Nothing here yet</p>
+                    </div>
                 </div>
                 <div class="settingsSection" id="settingsSection2">
-                    <h1>Hello</h1>
+                    <h1 class="sectionHeader">Widget Layout</h1>
+                </div>
+                <div class="settingsSection" id="settingsSection3">
+                    <h1 class="sectionHeader">Account</h1>
                 </div>
             </div>
         </div>
         <script>
+//            $(".widgetContainer").sortable();
             $(".settings, .settingsSection").hide();
             $("#settingsQuickLink").click(function(){
-                $(".widgetContainer, .quickLinksContainer").fadeOut("fast");
+                $(".widgetContainer, .quickLinksContainer").hide();
                 $(".settings").fadeIn("fast");
             })
             $("#done").click(function(){
@@ -194,9 +201,9 @@
                 $(".widgetContainer, .quickLinksContainer").fadeIn("fast");
             })
             $(".sidebarButton").click(function(){
-                $(".settingsSection").fadeOut("fast");
+                $(".settingsSection").hide();
                 var buttonID = parseInt($(this).attr("id"));
-                $("#settingsSection"+buttonID).delay(200).fadeIn("fast");
+                $("#settingsSection"+buttonID).fadeIn("fast");
             })
             
             //Background changing
@@ -204,19 +211,18 @@
                 var WPID = parseInt($(this).attr("id"));
                 localStorage.setItem("WPType","preset");
                 localStorage.setItem("WPID",WPID);
-//                $("body").css("background","url(images/wp"+WPID+".jpg)");
                 setWP(WPID);
             })
+
             function setWP(WPID){  
                 if (localStorage.getItem("WPType")=="preset"){
                     WPID = localStorage.getItem("WPID");
                     $("body, .blur").css("background","url(images/wp"+WPID+".jpg) no-repeat center center fixed");
                 }
-//                else if (localStorage.getItem("WPType")=="custom"){
-//                    WPID = localStorage.getItem("WPID");
-//                    $("body").css("background","url("+WPID+") no-repeat center center fixed");
-//                    $("#currentWP").css("background","url("+WPID+")");
-//                }
+                else if (localStorage.getItem("WPType")=="custom"){
+                    WPID = localStorage.getItem("WPID");
+                    $("body, .blur, .customWP").css("background","url("+WPID+") no-repeat center center fixed");
+                }
 //                else if (localStorage.getItem("WPType")=="theme"){
 //                    WPID = localStorage.getItem("theme");
 //                    if (WPID == "space"){
@@ -227,15 +233,53 @@
 //                        $("body").css("background","url(images/Wallpapers/"+WPID+".gif) no-repeat center center fixed");
 //                        setTheme(WPID);
 //                    }
+//
 //                }
-//                else{
-//                    getTime();
-//                }
-                $("body, .blur").css("background-size","cover");
-                if (localStorage.getItem("WPURL") != null){
+                
+                else if (localStorage.getItem("WPURL") != null){
                     $("#currentWP").css("background","url("+localStorage.getItem("WPURL")+")");
                 }
+                else{
+                    $("body, .blur").css("background","url(images/wp1.jpg) no-repeat center center fixed");
+                }
+                $("body, .blur, .customWP").css("background-size","cover");
             }
+            
+            
+//            function setWP(WPID){  
+//                var wpURL = $("#customURL").val();
+//                if ($("#customURL")!=""){
+//                    $("body, .blur, .customWP").css("background","url("+wpURL+") no-repeat center center fixed");
+//                    $("body, .blur, .customWP").css("background-size","cover");
+//                }
+//                else if (localStorage.getItem("WPType")=="preset"){
+//                    WPID = localStorage.getItem("WPID");
+//                    $("body, .blur").css("background","url(images/wp"+WPID+".jpg) no-repeat center center fixed");
+//                }
+//                else if (localStorage.getItem("WPType")=="custom"){
+//                    WPID = localStorage.getItem("WPID");
+//                    $("body").css("background","url("+WPID+") no-repeat center center fixed");
+//                    $(".customWP").css("background","url("+WPID+")");
+//                }
+////                else if (localStorage.getItem("WPType")=="theme"){
+////                    WPID = localStorage.getItem("theme");
+////                    if (WPID == "space"){
+////                        $("body, .blur").css("background","url(images/Wallpapers/"+WPID+".jpg) no-repeat center center fixed");
+////                        setTheme(WPID);
+////                    }
+////                    else if (WPID == "tron"){
+////                        $("body").css("background","url(images/Wallpapers/"+WPID+".gif) no-repeat center center fixed");
+////                        setTheme(WPID);
+////                    }
+////                }
+////                else{
+////                    getTime();
+////                }
+//                $("body, .blur").css("background-size","cover");
+//                if (localStorage.getItem("WPURL") != null){
+//                    $("#currentWP").css("background","url("+localStorage.getItem("WPURL")+")");
+//                }
+//            }
 //            $("#uploadButton").click(function(){
 //                var WPID = window.prompt("Please enter a picture URL");
 //                localStorage.setItem("WPType","custom");
@@ -257,6 +301,10 @@
 //                    setWP(localStorage.getItem("WPURL"));
 //                }
 //            });
+            
+            function startup(){
+                setWP(localStorage.getItem("WPID"));
+            }
         </script>
     </body>
 </html>
