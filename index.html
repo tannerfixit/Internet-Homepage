@@ -159,19 +159,34 @@
                                 <input class="searchbar" id="customURL" type="text" autocomplete="off" placeholder="Custom URL">
                                 <h2>Done</h2>
                             </div>
+                            <div class="customWallpaperPreview">
+                                
+                            </div>
                             <script>
+                                //Custom Wallpaper Triggers
                                 $("#customURL").change(function(){
                                     localStorage.setItem("WPType","custom");
-                                    localStorage.setItem("WPID",$("#customURL").val());
-                                    setWP("custom");
+                                    localStorage.setItem("WPURL",$("#customURL").val());
+                                    setWP();
                                 })
                                 $(".uploadBox h2").click(function(){
-                                    setWP("custom");
-                                })
-                                $(".customWP").click(function(){
-                                    if ($(localStorage.getItem("WPID"))!=""){
-                                        setWP("custom");
+                                    if ($("#customURL").val() != ""){
+                                        localStorage.setItem("WPType","custom");
+                                        localStorage.setItem("WPURL",$("#customURL").val());
+                                        setWP();
                                     }
+                                })
+                                $(".customWallpaperPreview").click(function(){
+                                    localStorage.setItem("WPType","custom");
+                                    setWP();
+                                })
+                                            
+                                //Preset Wallpaper Trigger
+                                $(".wallpaper").click(function(){
+                                    var WPID = parseInt($(this).attr("id"));
+                                    localStorage.setItem("WPType","preset");
+                                    localStorage.setItem("WPID",WPID);
+                                    setWP();
                                 })
                             </script>
                         </div>
@@ -205,105 +220,39 @@
                 var buttonID = parseInt($(this).attr("id"));
                 $("#settingsSection"+buttonID).fadeIn("fast");
             })
-            
-            //Background changing
-            $(".wallpaper").click(function(){
-                var WPID = parseInt($(this).attr("id"));
-                localStorage.setItem("WPType","preset");
-                localStorage.setItem("WPID",WPID);
-                setWP(WPID);
-            })
 
-            function setWP(WPID){  
-                if (localStorage.getItem("WPType")=="preset"){
-                    WPID = localStorage.getItem("WPID");
-                    $("body, .blur").css("background","url(images/wp"+WPID+".jpg) no-repeat center center fixed");
-                }
-                else if (localStorage.getItem("WPType")=="custom"){
-                    WPID = localStorage.getItem("WPID");
-                    $("body, .blur, .customWP").css("background","url("+WPID+") no-repeat center center fixed");
-                }
-//                else if (localStorage.getItem("WPType")=="theme"){
-//                    WPID = localStorage.getItem("theme");
-//                    if (WPID == "space"){
-//                        $("body").css("background","url(images/Wallpapers/"+WPID+".jpg) no-repeat center center fixed");
-//                        setTheme(WPID);
-//                    }
-//                    else if (WPID == "tron"){
-//                        $("body").css("background","url(images/Wallpapers/"+WPID+".gif) no-repeat center center fixed");
-//                        setTheme(WPID);
-//                    }
-//
-//                }
+
+            function setWP(){  
+                var WPID = localStorage.getItem("WPID");
+                var WPURL = localStorage.getItem("WPURL");
                 
-                else if (localStorage.getItem("WPURL") != null){
-                    $("#currentWP").css("background","url("+localStorage.getItem("WPURL")+")");
+                // If preset wallpaper
+                if (localStorage.getItem("WPType")=="preset"){
+                    $("body, .blur").css("background","url(images/wp"+WPID+".jpg) no-repeat fixed");
                 }
+                
+                // If URL was found
+                else if (localStorage.getItem("WPType")=="custom"){
+                    $("body, .blur").css("background","url("+WPURL+") no-repeat fixed");
+                }
+                
+                // This will happen if nothing is saved in localstorage
                 else{
-                    $("body, .blur").css("background","url(images/wp1.jpg) no-repeat center center fixed");
+                    $("body, .blur").css("background","url(images/wp1.jpg) no-repeat fixed");
                 }
-                $("body, .blur, .customWP").css("background-size","cover");
+                
+                // Check if there's a custom URL saved and apply it to that wallpaper tile
+                if (localStorage.getItem('WPURL') != ""){
+                    $(".customWallpaperPreview").css("background","url("+WPURL+")");
+                }
+                
+                //Sets the background to cover the entire page
+                $("body, .blur, .customWallpaperPreview").css("background-size","cover");
             }
             
-            
-//            function setWP(WPID){  
-//                var wpURL = $("#customURL").val();
-//                if ($("#customURL")!=""){
-//                    $("body, .blur, .customWP").css("background","url("+wpURL+") no-repeat center center fixed");
-//                    $("body, .blur, .customWP").css("background-size","cover");
-//                }
-//                else if (localStorage.getItem("WPType")=="preset"){
-//                    WPID = localStorage.getItem("WPID");
-//                    $("body, .blur").css("background","url(images/wp"+WPID+".jpg) no-repeat center center fixed");
-//                }
-//                else if (localStorage.getItem("WPType")=="custom"){
-//                    WPID = localStorage.getItem("WPID");
-//                    $("body").css("background","url("+WPID+") no-repeat center center fixed");
-//                    $(".customWP").css("background","url("+WPID+")");
-//                }
-////                else if (localStorage.getItem("WPType")=="theme"){
-////                    WPID = localStorage.getItem("theme");
-////                    if (WPID == "space"){
-////                        $("body, .blur").css("background","url(images/Wallpapers/"+WPID+".jpg) no-repeat center center fixed");
-////                        setTheme(WPID);
-////                    }
-////                    else if (WPID == "tron"){
-////                        $("body").css("background","url(images/Wallpapers/"+WPID+".gif) no-repeat center center fixed");
-////                        setTheme(WPID);
-////                    }
-////                }
-////                else{
-////                    getTime();
-////                }
-//                $("body, .blur").css("background-size","cover");
-//                if (localStorage.getItem("WPURL") != null){
-//                    $("#currentWP").css("background","url("+localStorage.getItem("WPURL")+")");
-//                }
-//            }
-//            $("#uploadButton").click(function(){
-//                var WPID = window.prompt("Please enter a picture URL");
-//                localStorage.setItem("WPType","custom");
-//                localStorage.setItem("WPID",WPID);
-//                if (WPID != null){
-//                    localStorage.setItem("WPURL",WPID);
-//                    setWP(WPID);
-//                }
-//            });
-//            $("#eraseWP").click(function(){
-//                localStorage.setItem("WPType",null);
-//                getTime();
-//            });
-//            $("#currentWP").click(function(){
-//                if (localStorage.getItem("WPURL") != null){
-//                    var WPURL = localStorage.getItem("WPURL")
-//                    localStorage.setItem("WPType","custom");
-//                    localStorage.setItem("WPID",WPURL);
-//                    setWP(localStorage.getItem("WPURL"));
-//                }
-//            });
-            
+            // Functions that happen when body is loading
             function startup(){
-                setWP(localStorage.getItem("WPID"));
+                setWP();
             }
         </script>
     </body>

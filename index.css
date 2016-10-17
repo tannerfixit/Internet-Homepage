@@ -1,5 +1,4 @@
 body{
-/*    background: url(images/wp1.jpg) no-repeat center center fixed;*/
     background-size: cover;
     font-family: helvetica;
     transition: background 1s ease-in-out;
@@ -114,7 +113,7 @@ input {
 /*    border: .1em solid rgba(255,255,255,.5);*/
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 10px rgb(50,50,50);
+    box-shadow: 0px 0px 10px black;
     transition: all .15s ease-in-out;
 }
 .widget:hover .widgetButtonHolder{
@@ -300,13 +299,14 @@ form, .form{
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    background: rgba(0,0,0,.3);
+    color: white;
+    background: rgba(0,0,0,.4);
 }
 .wallpaper, .customWP{
     height:15em;
     width:15em;
     margin:1em;
-    box-shadow: 0 0 10px;
+    box-shadow: 0 0 10px black;
     background-size: cover;
 }
 .wallpaper:nth-child(1){
@@ -347,6 +347,10 @@ form, .form{
     line-height: 2em;
     background: rgba(0,0,0,.3);
     color: white;
+}
+.customWallpaperPreview{
+    height: 80%;
+    background-size: cover;
 }
 
 
