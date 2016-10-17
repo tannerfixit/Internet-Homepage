@@ -10,26 +10,6 @@
     </head>
     <body onload="startup()">
         <div class="mainContent">
-            <div class="quickLinksContainer">
-                <div class="blur"></div>
-                <div class="overlay"></div>
-                
-                <a class="quickLink" style="background:rgba(100,200,100,.4)" href="https://my.calpoly.edu">
-                    <img src="images/icons/calpoly.png">
-                </a>
-                <a class="quickLink" style="background-color:rgba(36, 116, 237, 0.4)" href="https://reddit.com">
-                    <img src="images/icons/reddit.png">
-                </a>
-                <a class="quickLink" style="background-color:rgba(59, 89, 152, 0.5);" href="https://facebook.com">
-                    <img src="images/icons/facebook.png">
-                </a>
-                <a class="quickLink" style="background-color:rgba(22, 185, 237, .5);" href="http://twitter.com">
-                    <img src="images/icons/twitter.png">
-                </a>
-                <div class="quickLink" id="settingsQuickLink" style="background:rgba(170,170,170,.6)">
-                    <img src="images/icons/settings.png">
-                </div>
-            </div>
             <div class="widgetContainer">
                 <div class="widget" id="widget1">
                     <div class="blur"></div>
@@ -44,9 +24,9 @@
                     <div class="blur"></div>
                     <div class="overlay"></div>
                     <img src="images/logos/yahoo.png" draggable='false'>
-                    <form action="https://google.com/search">
-                        <input class="searchbar" type="text" name="q" autocomplete="off">
-                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    <form method="get" action="https://search.yahoo.com/search">
+                        <input type="text" name="p" class="searchbar" autocomplete="off">
+                        <input type="submit" class="searchButton" value="Search" id="search_text">
                     </form>
                 </div>
                 <div class="widget" id="widget3">
@@ -56,16 +36,16 @@
                     <div class="widgetButtonHolder">
                         <a href="reddit.com">Front page</a>
                     </div>
-                    <form action="https://google.com/search">
-                        <input class="searchbar" type="text" name="q" autocomplete="off">
-                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    <form action="https://www.reddit.com/subreddits/search?q=">        
+                        <input type="text" name="q" class="searchbar" autocomplete=off> 
+                        <input type="submit" class="searchButton" value="Search" id="search_text">
                     </form>
                 </div>
                 <div class="widget" id="widget4">
                     <div class="blur"></div>
                     <div class="overlay"></div>
                     <img src="images/logos/facebook.png" draggable='false'>
-                    <form action="https://google.com/search">
+                    <form action="https://www.facebook.com/search/top/?q=">
                         <input class="searchbar" type="text" name="q" autocomplete="off">
                         <input class="searchButton" type="submit" name="searchbutton" value="Search">
                     </form>
@@ -74,18 +54,18 @@
                     <div class="blur"></div>
                     <div class="overlay"></div>
                     <img src="images/logos/youtube.png" draggable='false'>
-                    <form action="https://google.com/search">
-                        <input class="searchbar" type="text" name="q" autocomplete="off">
-                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    <form class="form" action="https://www.youtube.com/results?">
+                        <input type="text" autocomplete="off" name="q" class="searchbar">
+                        <input type="submit" class="searchButton" name="searchbutton" value="Search" id="search_text">
                     </form>
                 </div>
                 <div class="widget" id="widget6">
                     <div class="blur"></div>
                     <div class="overlay"></div>
                     <img src="images/logos/amazon.png" draggable='false'>
-                    <form action="https://google.com/search">
-                        <input class="searchbar" type="text" name="q" autocomplete="off">
-                        <input class="searchButton" type="submit" name="searchbutton" value="Search">
+                    <form method="get" action="https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=">
+                        <input name="keywords" class="searchbar" type="text" autocomplete="off" value="">
+                        <input type="submit" class="searchButton" value="Search">
                     </form>
                 </div>
                 <div class="widget" id="widget7">
@@ -127,11 +107,31 @@
                     <div class="overlay"></div>
                     <img src="images/logos/spotify.png" draggable='false'>
                     <form action="https://google.com/search">
-                        <input class="searchbar" type="text" name="q" autocomplete="off">
+                        <input class="searchbar" type="text" name="q" autocomplete="off" placeholder="Not working yet">
                         <input class="searchButton" type="submit" name="searchbutton" value="Search">
                     </form>
                 </div>
                 <div class="bumper"></div>
+            </div>
+            <div class="quickLinksContainer">
+                <div class="blur"></div>
+                <div class="overlay"></div>
+                
+                <a class="quickLink" style="background:rgba(100,200,100,.4)" href="https://my.calpoly.edu">
+                    <img src="images/icons/calpoly.png">
+                </a>
+                <a class="quickLink" style="background-color:rgba(36, 116, 237, 0.4)" href="https://reddit.com">
+                    <img src="images/icons/reddit.png">
+                </a>
+                <a class="quickLink" style="background-color:rgba(59, 89, 152, 0.5);" href="https://facebook.com">
+                    <img src="images/icons/facebook.png">
+                </a>
+                <a class="quickLink" style="background-color:rgba(22, 185, 237, .5);" href="http://twitter.com">
+                    <img src="images/icons/twitter.png">
+                </a>
+                <div class="quickLink" id="settingsQuickLink" style="background:rgba(170,170,170,.6)">
+                    <img src="images/icons/settings.png">
+                </div>
             </div>
         </div>
         <div class="settings">
